@@ -1,4 +1,4 @@
-Samskip React Web Application Boilerplate
+React Web Application Boilerplate
 =====================
 
 ### Technology Stack
@@ -7,10 +7,12 @@ Samskip React Web Application Boilerplate
 * [Redux](https://github.com/rackt/redux)
 * [React-Router](https://github.com/rackt/react-router)
 * [React-Redux](https://github.com/reactjs/react-redux)
+* [Redux-thunk](https://github.com/gaearon/redux-thunk)}
 * [Webpack](https://github.com/webpack/webpack)
 * [Babel](https://github.com/babel/babel)
 * [ESLint](http://eslint.org/)
 * [Bootstrap](http://getbootstrap.com/)
+* [Karma](https://github.com/karma-runner/karma)
 * [APIsouce](https://github.com/skellock/apisauce)
 * [Reactotron](https://github.com/skellock/reactotron)
 
