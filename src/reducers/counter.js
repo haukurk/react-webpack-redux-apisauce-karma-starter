@@ -12,6 +12,11 @@ export default function counter(state = 0, action) {
             return state + 1;
         case Type.DECREMENT_COUNTER:
             return state - 1;
+        case Type.REHYDRATE:
+            var incoming = action.payload.counter // redux-persist use payload.
+            if (incoming)
+                return incoming;
+            return state
         default:
             return state;
     }

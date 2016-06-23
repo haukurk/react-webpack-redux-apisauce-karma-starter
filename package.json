@@ -84,7 +84,9 @@
     "react": "^0.14.6",
     "react-redux": "^4.0.6",
     "react-router": "^2.0.0",
+    "react-spinjs": "^3.0.0",
     "reactotron": "^0.6.1",
-    "redux": "^3.1.4"
+    "redux": "^3.1.4",
+    "redux-persist": "^3.2.2"
   }
 }
