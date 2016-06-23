@@ -13,7 +13,7 @@ React Web Application Boilerplate
 * [ESLint](http://eslint.org/)
 * [Bootstrap](http://getbootstrap.com/)
 * [Karma](https://github.com/karma-runner/karma)
-* [APIsouce](https://github.com/skellock/apisauce)
+* [APIsauce](https://github.com/skellock/apisauce)
 * [Reactotron](https://github.com/skellock/reactotron)
 
 ### Installation
@@ -33,7 +33,7 @@ open http://localhost:3000
 
 ### Monitor
 
-Use Reactotron to monitor Redux state, actions and API calls.
+Use Reactotron to monitor the application (redux) state, actions and API calls.
 
 ```
 $ npm run reactotron
