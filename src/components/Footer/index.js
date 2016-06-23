@@ -16,7 +16,7 @@ export class Footer extends Component {
             <footer className="footer">
                 <div className="container">
                     <div className="row">
-                        <p className="text-muted">&copy; 2016 Samskip</p>
+                        <p className="text-muted">&copy; 2016</p>
                     </div>
                 </div>
             </footer>

@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistStore, autoRehydrate } from 'redux-persist';
 //import Reactotron from 'reactotron' // WebPack breaks Reactoron. Disabling.
 import thunk from 'redux-thunk';
+import { rehydrationComplete } from '../actions/rehydrate';
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
@@ -13,7 +15,11 @@ export default function configureStore(initialState) {
         window.devToolsExtension ? window.devToolsExtension() : f => f
     )(createStore);
 
-    const store = finalCreateStore(rootReducer, initialState);
+    const store = finalCreateStore(rootReducer, initialState, autoRehydrate());
+
+    persistStore(store, {
+            whitelist: ['counter']
+        }, () => store.dispatch(rehydrationComplete())); // redux-persist.
 
     if (module.hot) {
         module.hot.accept('../reducers', () => {
