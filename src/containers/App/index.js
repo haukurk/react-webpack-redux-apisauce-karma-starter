@@ -21,13 +21,22 @@ import { Footer } from 'components/Footer';
 
 export class App extends Component {
 
-    const { system } = this.props;
+    /**
+     * [constructor of LoginForm]
+     * @param  {object} props passed to the Component
+     */
+    constructor(props) {
+        super(props);
+    }
 
     static propTypes = {
         children: React.PropTypes.any,
     };
 
     render() {
+
+        const { system } = this.props;
+
         if(!system.rehydrated) {
             return <ReactSpinner/>;
         }

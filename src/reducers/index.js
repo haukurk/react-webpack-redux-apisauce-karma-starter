@@ -8,7 +8,8 @@ import system from './system';
  */
 const rootReducer = combineReducers({
     counter,
-    authentication
+    authentication,
+    system
 });
 
 export default rootReducer;
