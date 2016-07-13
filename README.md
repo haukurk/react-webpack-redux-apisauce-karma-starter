@@ -7,6 +7,7 @@ React Web Application Boilerplate
 * [Redux](https://github.com/rackt/redux)
 * [React-Router](https://github.com/rackt/react-router)
 * [React-Redux](https://github.com/reactjs/react-redux)
+* [Redux-Persist](https://github.com/rt2zz/redux-persist) - Persisting and rehydrating the redux state.
 * [Redux-thunk](https://github.com/gaearon/redux-thunk)
 * [Webpack](https://github.com/webpack/webpack)
 * [Babel](https://github.com/babel/babel)
