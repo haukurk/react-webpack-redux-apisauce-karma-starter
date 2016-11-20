@@ -12,10 +12,9 @@ React Web Application Boilerplate
 * [Webpack](https://github.com/webpack/webpack)
 * [Babel](https://github.com/babel/babel)
 * [ESLint](http://eslint.org/)
-* [Bootstrap](http://getbootstrap.com/)
+* [Semantic UI](http://semanticui.com/)
 * [Karma](https://github.com/karma-runner/karma)
 * [APIsauce](https://github.com/skellock/apisauce)
-* [Reactotron](https://github.com/skellock/reactotron)
 
 ### Installation
 

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as LoginActions from 'actions/authentication';
 /* components */
 import { HomeSection } from 'components/HomeSection';
+
 
 /**
  * Meta data for the Home Route.
@@ -21,6 +24,16 @@ const metaData = {
 };
 
 /**
+ * Decorator to access redux states and utils.
+ */
+@connect(
+    state => ({
+        authentication: state.authentication
+    }),
+    dispatch => bindActionCreators(LoginActions, dispatch)
+)
+
+/**
  * Container for Home Route.
  */
 export class HomeContainer extends Component {
@@ -33,7 +46,7 @@ export class HomeContainer extends Component {
         return (
             <div>
                 <DocumentMeta {...metaData} />
-                <HomeSection />
+                <HomeSection {...this.props} />
             </div>
         );
     }

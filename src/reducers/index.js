@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import counter from './counter';
 import authentication from './authentication';
 import system from './system';
+import { routerReducer } from 'react-router-redux'
 
 /**
  * Combinator for reducers.
@@ -9,7 +10,8 @@ import system from './system';
 const rootReducer = combineReducers({
     counter,
     authentication,
-    system
+    system,
+    routing: routerReducer // For routing
 });
 
 export default rootReducer;

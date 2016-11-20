@@ -8,6 +8,8 @@ import { CounterSection } from 'components/CounterSection';
 
 /* action creators */
 import * as CounterActions from 'actions/counter';
+import * as LoginActions from 'actions/authentication';
+
 
 /**
  * Meta data for the Counter Route.
@@ -33,7 +35,7 @@ const metaData = {
         counter: state.counter,
         authentication: state.authentication
     }),
-    dispatch => bindActionCreators(CounterActions, dispatch)
+    dispatch => bindActionCreators(Object.assign({}, CounterActions, LoginActions), dispatch)
 )
 
 /**

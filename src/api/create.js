@@ -6,7 +6,7 @@ import { create } from 'apisauce';
 
 // Create a base for API.
 const api = create({
-  baseURL: 'https://api.com/v1.0/', // Production. TODO: choose TST or PROD based on env.
+  baseURL: 'https://vefthjonusta.samskip.is/SW3.L/Samskip.AuthAPI', // Production. TODO: choose TST or PROD based on env.
 });
 
 // TODO: Add headers for authentication if authenticated.

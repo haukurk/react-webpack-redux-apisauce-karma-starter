@@ -6,7 +6,7 @@ const pkg = require('../package.json');
 module.exports = {
   devtool: 'source-map',
 
-  entry: ['bootstrap-loader/extractStyles'],
+  entry: [],
 
   output: {
     publicPath: '',
@@ -15,6 +15,10 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.scss$/,
+      loader: 'style!css!postcss-loader!sass',
+    },
+    {
+      test: /\.css$/,
       loader: 'style!css!postcss-loader!sass',
     }],
   },

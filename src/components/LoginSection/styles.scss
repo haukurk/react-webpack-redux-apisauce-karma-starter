@@ -1,3 +1,22 @@
-.loginContainer {
+:local(.styles) {
+
+    .image {
+        margin-top: -100px;
+    }
+    .column {
+        max-width: 450px;
+    }
+
+  .text.container .left.floated.image {
+    margin: 2em 2em 2em -4em;
+  }
+  .text.container .right.floated.image {
+    margin: 2em -4em 2em 2em;
+  }
+
+  .ui.footer.segment {
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
+  }
   
 }

@@ -18,12 +18,7 @@ export class LoginSection extends Component {
      */
     render() {
         return (
-            <div className="container">
-                <div className="jumbotron">
-                    <h2>Login Page</h2>
-                </div>
-                <LoginForm {...this.props} />
-            </div>
+            <LoginForm {...this.props} />
         );
     }
 }

@@ -4,11 +4,14 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import { rehydrationComplete } from '../actions/rehydrate';
 import rootReducer from '../reducers';
+import { routerMiddleware } from 'react-router-redux';
 
-export default function configureStore(initialState) {
+export default function configureStore(history, initialState) {
+    const middleware = routerMiddleware(history)
     const finalCreateStore = compose(
         applyMiddleware(
             thunk, // Be able to pass thunks with dispatch, yey! A must for API calls.
+            middleware
             //Reactotron.reduxMiddleware // Use Reactotron to monitor your app. I recommend Redux addon for Chrome though.
             // WebPack breaks Reactoron. Disabling.
         ),
@@ -18,7 +21,7 @@ export default function configureStore(initialState) {
     const store = finalCreateStore(rootReducer, initialState, autoRehydrate());
 
     persistStore(store, {
-            whitelist: ['counter']
+            whitelist: ['authentication','counter']
         }, () => store.dispatch(rehydrationComplete())); // redux-persist.
 
     if (module.hot) {

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Button } from 'semantic-ui-react'
 
 /**
  * Counter Component
@@ -15,13 +16,14 @@ class Counter extends Component {
         const { increment, incrementIfOdd, incrementAsync, decrement, counter, authentication } = this.props;
 
         // Don't show controls if not authenticated. - This is of course not secure but more to just demonstrate.
-        if(authentication.authenticated === true) {
-            return (<div className="btn-group">
-                <button className="btn btn-default" onClick={increment}>+</button>
-                <button className="btn btn-default" onClick={decrement}>-</button>
-                <button className="btn btn-default" onClick={incrementIfOdd}>Increment if odd</button>
-                <button className="btn btn-default" onClick={() => incrementAsync()}>Increment async</button>
-            </div>);
+        if(authentication.isAuthenticated === true) {
+
+            return (<Button.Group>
+                     <Button onClick={increment}>+</Button>
+                     <Button onClick={decrement}>-</Button>
+                     <Button onClick={incrementIfOdd}>Increment if odd</Button>
+                     <Button onClick={() => incrementAsync()}>Increment async</Button>
+                   </Button.Group>);
         } else {
             return <p>Please login to increase or decrease the counter.</p>;
         }
@@ -37,11 +39,9 @@ class Counter extends Component {
         const { counter } = this.props;
 
         return (
-            <div className="panel panel-default">
-                <div className="panel-body">
+            <div className="ui text container">
                     <p>Clicked: <span className="badge">{counter}</span> times</p>
                     {this.renderControls()}
-                </div>
             </div>
         );
     }

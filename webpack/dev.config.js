@@ -4,7 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    'bootstrap-loader',
     'webpack-hot-middleware/client',
     './src/index',
   ],
@@ -15,6 +14,10 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.scss$/,
+      loader: 'style!css?localIdentName=[path][name]--[local]!postcss-loader!sass',
+    },
+    {
+      test: /\.css$/,
       loader: 'style!css?localIdentName=[path][name]--[local]!postcss-loader!sass',
     }],
   },
@@ -31,6 +34,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
+      $: "jquery",
       jQuery: 'jquery',
     }),
   ],

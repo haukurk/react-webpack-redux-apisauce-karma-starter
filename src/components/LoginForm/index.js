@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
 import { styles } from './styles.scss';
+import { push } from 'react-router-redux';
+
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 class LoginForm extends Component {
 
@@ -30,9 +33,11 @@ class LoginForm extends Component {
 
         e.preventDefault();
         if(!userName.trim() || !password.trim()) {
+            console.log("Empty user or pass.");
             return;
         }
         loginWithAPI(userName, password, 1000); // 1000 is subsys for Samskip.
+        
     }
 
     /**
@@ -44,7 +49,7 @@ class LoginForm extends Component {
         // Extract from props
         const {
             authentication,
-            dispatch,
+            transitionTo,
             loginWithAPI,
             forgetLogin } = this.props;
 
@@ -53,62 +58,66 @@ class LoginForm extends Component {
             userName,
             password } = this.state;
 
-        if(authentication.authenticated == false ||
-            authentication.authenticated === undefined)
+        if(authentication.isAuthenticated == false ||
+            authentication.isAuthenticated === undefined)
         {
-            // TODO: Componize more.
+
             return (
-                <div className="row">
-                   <div className="col-md-4 col-md-offset-4">
-                       <div className="panel panel-default">
-                           <div className="panel-heading">
-                               <h3 className="panel-title">Loginizer!</h3>
-                           </div>
-                           <div className="panel-body">
-                               <form onSubmit={this._onSubmit.bind(this)} role="form">
-                               <fieldset>
-                                   <div className="form-group">
-                                       <input
-                                           value={this.state.userName}
-                                           onChange={ (evt) => {
+                <div className="column">
+                    <h2 className="ui teal image header">
+                    <div className="content">
+                        Log-in to your account
+                    </div>
+                    </h2>
+                    <form role="form" onSubmit={this._onSubmit.bind(this)} className="ui large form">
+                    <div className="ui stacked segment">
+                        <div className="field">
+                        <div className="ui left icon input">
+                            <i className="user icon"></i>
+                            <input type="text" 
+                                   name="user" 
+                                   placeholder="User"
+                                   onChange={ (evt) => {
                                                this.setState({
                                                    userName: evt.target.value
                                                });
-                                           }}
-                                           className="form-control"
-                                           placeholder="Your username"
-                                           name="text"
-                                           type="text" />
-                                   </div>
-                                   <div className="form-group">
-                                       <input
-                                           value={this.state.password}
-                                           onChange={ (evt) => {
+                                           }}/>
+                        </div>
+                        </div>
+                        <div className="field">
+                        <div className="ui left icon input">
+                            <i className="lock icon"></i>
+                            <input type="password" 
+                                   name="password" 
+                                   placeholder="Password"
+                                   onChange={ (evt) => {
                                                this.setState({
                                                    password: evt.target.value
                                                });
-                                           }}
-                                           className="form-control"
-                                           placeholder="Password"
-                                           name="password"
-                                           type="password" />
-                                   </div>
-                                   <div className="checkbox">
-                                       <label>
-                                           <input name="remember" type="checkbox" value="Remember Me" /> Remember Me
-                                       </label>
-                                   </div>
-                                   <input className="btn btn-lg btn-success btn-block" type="submit" value="Login" />
-                               </fieldset>
-                               </form>
-                           </div>
-                       </div>
-                   </div>
-               </div>
+                                           }}/>
+                        </div>
+                        </div>
+                        <div className="ui fluid large teal submit button" onClick={this._onSubmit.bind(this)}>Login</div>
+                    </div>
+
+                    <div className="ui error message"></div>
+
+                    </form>
+
+                    <div className="ui message">
+                    Having problems? <a href="#">Contact Someone.</a>
+                    </div>
+                </div>
             );
         }
         else {
-            return <a onClick={forgetLogin} href="#">Forget my login tokens!</a>;
+        /*   return (<div>
+                      <p>
+                      You are already logged in.
+                      <a onClick={forgetLogin} href="#">Click here to logout!</a>
+                      </p>
+                    </div>)*/
+            transitionTo('/');
         }
     }
 
@@ -118,13 +127,27 @@ class LoginForm extends Component {
      */
     render() {
 
-        const { counter } = this.props;
+        const { counter, authentication } = this.props;
+
+        if(authentication.requesting) {
+            return (
+            <div>
+            <Dimmer active inverted>
+                <Loader inverted>Logging in..</Loader>
+            </Dimmer>
+            <div className={`${styles}`}>
+            <div className="ui middle aligned center aligned grid">
+            {this.renderForm()}
+            </div>
+            </div>
+            </div>)
+        }
 
         return (
-            <div className="panel panel-default">
-                <div className="panel-body">
-                    {this.renderForm()}
-                </div>
+            <div className={`${styles}`}>
+            <div className="ui middle aligned center aligned grid">
+            {this.renderForm()}
+            </div>
             </div>
         );
     }

@@ -8,7 +8,7 @@ import api from '../create';
  * @return {[promise based response from apisauce]}
  */
 export function login(username, password, subsys = 1000) {
-  return api.post('AuthAPI/auth/login',
+  return api.post('/auth/login',
   {
     "Username": username,
     "Password": password,

@@ -23,23 +23,29 @@ export default function authentication(state = initialState, action) {
             });
         case Type.SUCCESS_LOGIN:
             return Object.assign({}, state, {
-                username: action.payload.username,
+                userName: action.payload.username,
                 token: action.payload.token,
-                authenticated: true,
+                isAuthenticated: true,
                 error: "",
                 requesting: false
             });
         case Type.ERROR_LOGIN:
             return Object.assign({}, state, {
                error: action.error,
-               requesting: false
+               requesting: false,
+               isAuthenticated: false
            });
         case Type.FORGET_LOGIN:
             return Object.assign({}, state, {
-               token: "",
+               token: null,
+               userName: null,
                requesting: false,
-               authenticated: false
+               isAuthenticated: false
            });
+       case Type.REHYDRATE:
+           var incoming = action.payload.authentication // redux-persist use payload.
+           if (incoming)
+               return incoming
         default:
             return state;
     }

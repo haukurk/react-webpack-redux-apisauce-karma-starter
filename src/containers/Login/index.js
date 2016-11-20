@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import DocumentMeta from 'react-document-meta';
 import { LoginSection } from 'components/LoginSection';
 import * as LoginActions from 'actions/authentication';
+import * as NavigateActions from 'actions/navigation';
 
 /**
  * Meta data for the Login Route.
@@ -28,7 +29,7 @@ const metaData = {
     state => ({
         authentication: state.authentication
     }),
-    dispatch => bindActionCreators(LoginActions, dispatch)
+    dispatch => bindActionCreators(Object.assign({}, NavigateActions, LoginActions), dispatch)
 )
 
 /**

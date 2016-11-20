@@ -10,7 +10,8 @@
     "lint": "eslint src",
     "start": "node bin/server.js",
     "test": "karma start",
-    "reactotron": "node_modules/.bin/reactotron"
+    "reactotron": "node_modules/.bin/reactotron",
+    "flow_check": "flow check || exit 0"
   },
   "license": "MIT",
   "authors": [
@@ -41,6 +42,7 @@
     "express-open-in-editor": "^1.1.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "flow-bin": "^0.35.0",
     "history": "^2.0.0-rc2",
     "html-webpack-plugin": "^1.4.0",
     "imports-loader": "^0.6.5",
@@ -84,9 +86,12 @@
     "react": "^0.14.6",
     "react-redux": "^4.0.6",
     "react-router": "^2.0.0",
+    "react-router-redux": "^4.0.7",
     "react-spinjs": "^3.0.0",
     "reactotron": "^0.6.1",
     "redux": "^3.1.4",
-    "redux-persist": "^3.2.2"
+    "redux-persist": "^3.2.2",
+    "semantic-ui": "^2.2.6",
+    "semantic-ui-react": "^0.60.4"
   }
 }

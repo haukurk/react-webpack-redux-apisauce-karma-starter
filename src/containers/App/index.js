@@ -5,10 +5,8 @@ import ReactSpinner from 'react-spinjs';
 
 /* global styles for app */
 import './styles/app.scss';
-
-/* application components */
-import { Header } from 'components/Header';
-import { Footer } from 'components/Footer';
+// Semantic UI
+import '../../../semantic/dist/semantic.css';
 
 /**
  * Decorator to access redux states and utils.
@@ -42,11 +40,7 @@ export class App extends Component {
         }
         return (
             <div>
-                <Header />
-                <main>
-                    {this.props.children}
-                </main>
-                <Footer />
+                {this.props.children}
             </div>
         );
     }
